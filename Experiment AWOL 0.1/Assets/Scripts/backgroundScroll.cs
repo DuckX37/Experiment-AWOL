@@ -8,8 +8,8 @@ public class backgroundScroll : MonoBehaviour
 
     private Vector2 startPos;
     private float repeatWidth;
-    public int repeatCount = 0;
-
+    public int repeatCount = 25;
+    // pog
     void Start()
     {
         startPos = transform.position;
