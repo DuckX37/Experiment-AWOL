@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelect.unity
     guid: b21701b059f45094c9510a05889d2410
   - enabled: 1
-    path: Assets/Scenes/The Labs.unity
+    path: Assets/Scenes/The Basement.unity
     guid: 726cd1e19c2cc4349b781a03493ba3bf
   m_configObjects: {}
