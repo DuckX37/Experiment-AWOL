@@ -23,6 +23,7 @@ public class backgroundScroll : MonoBehaviour
         {
             transform.position = startPos;
             repeatCount++;
+            // Debug.Log("Repeat Count: " + repeatCount);
         }
     }
 }

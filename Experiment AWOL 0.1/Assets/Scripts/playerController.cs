@@ -7,6 +7,9 @@ public class playerController : MonoBehaviour
     private Rigidbody2D myRb;
 
     public int playerSpeed = 3;
+    public int laserCount = 20;
+
+    public float laserLifesSpan = 2.5f;
 
     public float jumpForce;
     public float horizontalInput;
@@ -22,6 +25,15 @@ public class playerController : MonoBehaviour
     public float defenseSoak;
     public float cooldown;
     public float dmg;
+
+    // cooldowns
+    public bool laserCooldownOn = false;
+
+    //player specific variables
+    public GameObject beam;
+    public GameObject laser;
+
+
 
     void Start()
     {
@@ -46,28 +58,30 @@ public class playerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!gm.midas && jumpCount <= 2)
+            //Jump Count code for Ion and Vesu
+            if (!gm.midas && jumpCount < 2)
             {
-                // int jumpCount = 0;
+
                 jumpCount++;
                 velocity.y = jumpForce;
+                Debug.Log("Jump Count = " + jumpCount);
+            }
 
-               
-
-                if(jumpCount >= 1)
-                {
-                    //Find a way to see if Midas is on the ground
-
-                }
-
-
+            //Jump Count code for Midas
+            if (gm.midas && jumpCount < 1)
+            {
+                jumpCount++;
+                velocity.y = jumpForce;
+                Debug.Log("Jump Count = " + jumpCount);
 
             }
 
-            velocity.y = jumpForce;
-            //Make Vesu and Ion not triple jump!
+
 
         }
+
+
+
 
         myRb.velocity = velocity;
 
@@ -92,23 +106,104 @@ public class playerController : MonoBehaviour
 
         }
 
-        
-    }
-
-    public void ionSelect()
-    {
-        health = 100;
-        hitChance = 100;
-        defenseSoak = 10;
-        cooldown = 2;
-        dmg = 10;
-
 
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.name == "Ground")
+        {
+            jumpCount = 0;
+        }
     }
 
+
+    public void ionSelect()
+    {
+        health = 100;
+        hitChance = 100;
+        defenseSoak = 0;
+        cooldown = 2;
+        dmg = 10;
+
+        float laserSpeed = 15f;
+
+        if (Input.GetKeyDown(KeyCode.P) && !laserCooldownOn)
+        {
+            laserCount--;
+            // Debug.Log("Laser Count: " + laserCount);
+
+            GameObject l = Instantiate(laser, transform);
+            l.GetComponent<Rigidbody2D>().velocity = new Vector2(laserSpeed, 0);
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), l.GetComponent<BoxCollider2D>());
+
+            Destroy(l, laserLifesSpan);
+
+        }
+
+        if (laserCount == 0)
+        {
+            StartCoroutine("LaserRefill");
+            laserCount = 20;
+        }
+
+        //special beam move
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            beam.SetActive(true);
+            StartCoroutine("BeamDuration");
+            // StartCoroutine("BeamCooldown");
+        }
+    }
+
+    //Cooldowns for Ion
+
+    IEnumerator LaserRefill()
+    {
+        laserCooldownOn = true;
+        Debug.Log("Cooldown in progress...");
+        yield return new WaitForSeconds(5);
+        laserCooldownOn = false;
+        Debug.Log("Good to go!");
+    }
+
+    IEnumerator BeamDuration()
+    {
+        Debug.Log("LONG ASS LASER BEAM");
+        yield return new WaitForSeconds(4);
+        beam.SetActive(false);
+        StartCoroutine("BeamCooldown");
+    }
+
+    IEnumerator BeamCooldown()
+    {
+        Debug.Log("Cooldown for beam in progress...");
+        yield return new WaitForSeconds(30);
+    }
+
+    public void midasSelect()
+    {
+        health = 100;
+        hitChance = 100;
+        defenseSoak = 5;
+        cooldown = 20;
+        dmg = 10;
+
+
+    }
+
+    public void vesuviusSelect()
+    {
+        health = 100;
+        hitChance = 100;
+        defenseSoak = 0;
+        cooldown = 20;
+        dmg = 10;
+
+
+  
+    }
+
+
+    
 }
