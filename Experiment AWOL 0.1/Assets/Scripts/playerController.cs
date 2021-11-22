@@ -11,6 +11,7 @@ public class playerController : MonoBehaviour
     public float jumpForce;
     public float horizontalInput;
     public float gravityMod;
+    public int jumpCount = 0;
 
     public GameManager gm;
 
@@ -45,12 +46,13 @@ public class playerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!gm.midas)
+            if (!gm.midas && jumpCount <= 2)
             {
-                int jumpCount = 0;
+                // int jumpCount = 0;
+                jumpCount++;
                 velocity.y = jumpForce;
 
-                jumpCount++;
+               
 
                 if(jumpCount >= 1)
                 {
