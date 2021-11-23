@@ -29,11 +29,13 @@ public class playerController : MonoBehaviour
     // cooldowns
     public bool laserCooldownOn = false;
 
+    public bool explosionCooldownOn = false;
+
     //player specific variables
     public GameObject beam;
     public GameObject laser;
 
-
+    public GameObject vesuExplosion;
 
     void Start()
     {
@@ -61,10 +63,8 @@ public class playerController : MonoBehaviour
             //Jump Count code for Ion and Vesu
             if (!gm.midas && jumpCount < 2)
             {
-
                 jumpCount++;
                 velocity.y = jumpForce;
-                Debug.Log("Jump Count = " + jumpCount);
             }
 
             //Jump Count code for Midas
@@ -72,8 +72,6 @@ public class playerController : MonoBehaviour
             {
                 jumpCount++;
                 velocity.y = jumpForce;
-                Debug.Log("Jump Count = " + jumpCount);
-
             }
 
 
@@ -86,7 +84,6 @@ public class playerController : MonoBehaviour
         myRb.velocity = velocity;
 
 
-        //Ion Select
 
         if (gm.ion)
         {
@@ -99,11 +96,13 @@ public class playerController : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = new Color(0.9339623f, 7163166f, 0.07489321f, 1);
 
+            midasSelect();
         }
         else if (gm.vesuvius)
         {
             GetComponent<SpriteRenderer>().color = new Color(0.9245283f, 0.1768453f, 0.02180491f, 1);
 
+            vesuviusSelect();
         }
 
 
@@ -189,7 +188,7 @@ public class playerController : MonoBehaviour
         cooldown = 20;
         dmg = 10;
 
-
+        //Punch is in enemy controller
     }
 
     public void vesuviusSelect()
@@ -200,10 +199,31 @@ public class playerController : MonoBehaviour
         cooldown = 20;
         dmg = 10;
 
+        //Punch is in Enemy controller
 
+        if (Input.GetKeyDown(KeyCode.S) && !explosionCooldownOn)
+        {
+            StartCoroutine("ExplosionDuration");
+        }
   
     }
 
+    IEnumerator ExplosionDuration()
+    {
+        Debug.Log("BOOM");
+        vesuExplosion.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        vesuExplosion.SetActive(false);
+        explosionCooldownOn = true;
+        StartCoroutine("ExplosionCooldown");
+    }
 
+    IEnumerator ExplosionCooldown()
+    {
+        Debug.Log("Explosion Cooldown in progress...");
+        yield return new WaitForSeconds(10);
+        explosionCooldownOn = false;
+        Debug.Log("Good to go!");
+    }
     
 }
