@@ -1249,6 +1249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 2
+  laserCount: 20
+  laserLifesSpan: 2.5
   jumpForce: 20
   horizontalInput: 0
   gravityMod: 5
@@ -1259,6 +1261,9 @@ MonoBehaviour:
   defenseSoak: 0
   cooldown: 0
   dmg: 0
+  laserCooldownOn: 0
+  beam: {fileID: 0}
+  laser: {fileID: 0}
 --- !u!50 &741078199
 Rigidbody2D:
   serializedVersion: 4
