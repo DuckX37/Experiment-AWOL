@@ -31,11 +31,15 @@ public class playerController : MonoBehaviour
 
     public bool explosionCooldownOn = false;
 
+    public bool rushCooldownOn = false;
+
     //player specific variables
     public GameObject beam;
     public GameObject laser;
 
     public GameObject vesuExplosion;
+
+    public GameObject midasRush;
 
     void Start()
     {
@@ -189,10 +193,38 @@ public class playerController : MonoBehaviour
         dmg = 10;
 
         //Punch is in enemy controller
+
+        if (Input.GetKeyDown(KeyCode.S) && !rushCooldownOn)
+        {
+            StartCoroutine("BullRushDuration");
+        }
     }
+
+    IEnumerator BullRushDuration()
+    {
+        Debug.Log("Woosh!");
+        midasRush.SetActive(true);
+        yield return new WaitForSeconds(5);
+        midasRush.SetActive(false);
+        rushCooldownOn = true;
+        StartCoroutine("BullRushCooldown");
+
+    }
+
+    IEnumerator BullRushCooldown()
+    {
+        Debug.Log("Cooldown");
+        midasRush.SetActive(false);
+        yield return new WaitForSeconds(15);
+        rushCooldownOn = false;
+    }
+
+
+
 
     public void vesuviusSelect()
     {
+
         health = 100;
         hitChance = 100;
         defenseSoak = 0;
@@ -205,7 +237,7 @@ public class playerController : MonoBehaviour
         {
             StartCoroutine("ExplosionDuration");
         }
-  
+
     }
 
     IEnumerator ExplosionDuration()
@@ -225,5 +257,5 @@ public class playerController : MonoBehaviour
         explosionCooldownOn = false;
         Debug.Log("Good to go!");
     }
-    
-}
+}  
+
