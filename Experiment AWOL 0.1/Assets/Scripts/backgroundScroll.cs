@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagment;
+using UnityEngine.SceneManagement;
 
 public class backgroundScroll : MonoBehaviour
 {
@@ -15,13 +15,13 @@ public class backgroundScroll : MonoBehaviour
     {
         startPos = transform.position;
 
-        if (SceneManager.GetSceneByName("The Basement".isLoaded))
+        if (SceneManager.GetSceneByName("The Basement").isLoaded)
         {
             repeatWidth = GetComponent<BoxCollider2D>().size.x / 1.5f;
         }
-        else if (SceneManager.GetSceneByName("The Labs".isLoaded))
+        else if (SceneManager.GetSceneByName("The Labs").isLoaded)
         {
-            repeatWidth = GetComponent<BoxCollider2D>().size.x / 1.2f;
+            repeatWidth = GetComponent<BoxCollider2D>().size.x / 2f;
         }
     }
 
