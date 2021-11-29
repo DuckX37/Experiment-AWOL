@@ -23,6 +23,11 @@ public class backgroundScroll : MonoBehaviour
         {
             repeatWidth = GetComponent<BoxCollider2D>().size.x / 2f;
         }
+        else if (SceneManager.GetSceneByName("The Forest").isLoaded)
+        {
+            repeatWidth = GetComponent<BoxCollider2D>().size.x / 1.5f;
+
+        }
     }
 
     // Update is called once per frame
