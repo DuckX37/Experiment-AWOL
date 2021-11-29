@@ -52,7 +52,7 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         //player movment code!
 
         Vector2 velocity = myRb.velocity;
@@ -195,10 +195,13 @@ public class playerController : MonoBehaviour
 
         //Punch is in enemy controller
 
+
         if (Input.GetKeyDown(KeyCode.S) && !rushCooldownOn)
         {
             StartCoroutine("BullRushDuration");
         }
+
+
     }
 
     IEnumerator BullRushDuration()
@@ -257,6 +260,19 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(10);
         explosionCooldownOn = false;
         Debug.Log("Good to go!");
+    }
+
+    public void OnTriggerEnter2D(Collision collision)
+    {
+        if(!gm.ion)
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                collision.gameObject.GetComponent<scientistController>().health -= dmg;
+                Debug.Log("Pow");
+            }
+
+        }
     }
 }  
 
