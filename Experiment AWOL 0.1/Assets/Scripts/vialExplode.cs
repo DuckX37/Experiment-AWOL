@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class vialExplode : MonoBehaviour
 {
-
     public float dmg;
 
     // Start is called before the first frame update
@@ -16,15 +15,38 @@ public class vialExplode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(gameObject.tag == "purpleVial")
+        if (collision.gameObject.tag == "player")
         {
-            dmg = Random.Range(1, 20);
+            if (gameObject.tag == "purpleVial")
+            {
+                dmg = Random.Range(1, 20);
+                collision.gameObject.GetComponent<playerController>().health -= dmg;
+                Destroy(gameObject);
+                Debug.Log("Health: " + collision.gameObject.GetComponent<playerController>().health);
+            }
+
+            if (gameObject.tag == "greenVial")
+            {
+                dmg = Random.Range(5, 10);
+                collision.gameObject.GetComponent<playerController>().health -= dmg;
+                Destroy(gameObject);
+                Debug.Log("Health: " + collision.gameObject.GetComponent<playerController>().health);
+            }
+
+            if (gameObject.tag == "orangeVial")
+            {
+                dmg = Random.Range(10, 15);
+                collision.gameObject.GetComponent<playerController>().health -= dmg;
+                Destroy(gameObject);
+                Debug.Log("Health: " + collision.gameObject.GetComponent<playerController>().health);
+            }
 
         }
+        
     }
 }

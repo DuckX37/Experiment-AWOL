@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5430826573738635622}
   - component: {fileID: 1762818917309382097}
   - component: {fileID: 3173360873140119676}
+  - component: {fileID: -3534289428220473190}
   m_Layer: 0
   m_Name: Vial
   m_TagString: Untagged
@@ -126,3 +127,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   leftBound: -75
+--- !u!114 &-3534289428220473190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863328289428818808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542a021dbdd05df44952426a348e5398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmg: 0

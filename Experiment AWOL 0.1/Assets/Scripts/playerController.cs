@@ -52,6 +52,7 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //player movment code!
 
         Vector2 velocity = myRb.velocity;
