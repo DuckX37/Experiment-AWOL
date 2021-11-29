@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 85814313114842095}
   - component: {fileID: 3783395960192990936}
   - component: {fileID: 9069566488730999550}
+  - component: {fileID: -7326451408522607715}
   m_Layer: 0
   m_Name: Scientist
   m_TagString: Untagged
@@ -143,3 +144,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   leftBound: -75
+--- !u!114 &-7326451408522607715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764999485299164556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dffed37f7a4a57b48b0791c933baf4f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
