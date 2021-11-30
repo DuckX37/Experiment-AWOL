@@ -33,6 +33,8 @@ public class playerController : MonoBehaviour
 
     public bool rushCooldownOn = false;
 
+    public bool stunned = false;
+
     //player specific variables
     public GameObject beam;
     public GameObject laser;
@@ -59,7 +61,8 @@ public class playerController : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
 
-        transform.Translate(Vector2.right * horizontalInput * playerSpeed * Time.deltaTime);
+        if(!stunned)
+            transform.Translate(Vector2.right * horizontalInput * playerSpeed * Time.deltaTime);
 
         //Jump code
 
@@ -262,7 +265,7 @@ public class playerController : MonoBehaviour
         Debug.Log("Good to go!");
     }
 
-    public void OnTriggerEnter2D(Collision collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if(!gm.ion)
         {
