@@ -12,6 +12,8 @@ public class droneScript : MonoBehaviour
     public bool inRange = false;
     public bool canFire = true;
 
+    public float bottomBound = -14;
+
     public Vector2 velocity;
     public Vector2 playerPos;
     public moveLeft left;
@@ -27,7 +29,7 @@ public class droneScript : MonoBehaviour
 
         playerTarget = GameObject.Find("Player").transform;
 
-        velocity = new Vector3(-lazer, -2);
+        velocity = new Vector2(-lazer, -2);
     }
 
     // Update is called once per frame
@@ -49,15 +51,16 @@ public class droneScript : MonoBehaviour
             Vector3 lookPos = playerTarget.position - transform.position;
             float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
             b.GetComponent<Rigidbody2D>().rotation = angle;
+            Destroy(b, 4);
 
             canFire = false;
         }
 
-        if(!canFire)
+        if (!canFire)
         {
             fireTimer += Time.deltaTime;
 
-            if(fireTimer >= fireCooldown)
+            if (fireTimer >= fireCooldown)
             {
                 fireTimer = 0;
                 canFire = true;

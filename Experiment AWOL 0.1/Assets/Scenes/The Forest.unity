@@ -802,6 +802,7 @@ MonoBehaviour:
   laserCooldownOn: 0
   explosionCooldownOn: 0
   rushCooldownOn: 0
+  stunned: 0
   beam: {fileID: 0}
   laser: {fileID: 0}
   vesuExplosion: {fileID: 0}
@@ -988,11 +989,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   speed: 2
+  lazer: 7
   fireTimer: 2
   fireCooldown: 1
   inRange: 0
   canFire: 1
+  bottomBound: -14
   velocity: {x: -7, y: -1}
+  playerPos: {x: 0, y: 0}
   left: {fileID: 926306931}
   bullet: {fileID: 6035882612509453009, guid: 62f4387925283254aa4cfdc7847e2e19, type: 3}
   playerTarget: {fileID: 889984186}
