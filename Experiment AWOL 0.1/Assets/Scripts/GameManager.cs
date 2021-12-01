@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour
         if (!ion && !midas && !vesuvius)
         {
             Time.timeScale = 0;
-        } else
+        }
+        else
         {
             Time.timeScale = 1;
         }
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
             healthBar.GetComponent<Transform>().localScale = new Vector3(1.43303f, 0.6028796f, 1);
         }
     }
-    
+
 
     public void ionSelect()
     {
@@ -94,5 +95,25 @@ public class GameManager : MonoBehaviour
         GameObject.Find("midasSelectButton").SetActive(false);
         GameObject.Find("Text").SetActive(false);
         GameObject.Find("Image").SetActive(false);
+    }
+
+    //Scene Change
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "basementExit")
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        if (collision.gameObject.tag == "labsExit")
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        if (collision.gameObject.tag == "forestExit")
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 }
