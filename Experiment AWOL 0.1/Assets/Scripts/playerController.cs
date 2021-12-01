@@ -282,14 +282,14 @@ public class playerController : MonoBehaviour
         if (collision.gameObject.tag == "healthPickup")
         {
             health += 20;
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
 
         }
 
         if (collision.gameObject.tag == "defensePickup")
         {
             defenseSoak += 5;
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
             StartCoroutine("picupDuration");
             defenseSoak -= 5;
 
@@ -299,7 +299,7 @@ public class playerController : MonoBehaviour
         if (collision.gameObject.tag == "dmgPickup")
         {
             dmg += 15;
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
             StartCoroutine("picupDuration");
             dmg -= 15;
         }

@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject midasButton;
     public GameObject player;
     public GameObject Title;
+    public GameObject healthBar;
+
+    public playerController playerC;
 
     public bool ion = false;
     public bool vesuvius = false;
@@ -21,7 +24,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-
     }
 
     // Update is called once per frame
@@ -30,12 +32,30 @@ public class GameManager : MonoBehaviour
         if (!ion && !midas && !vesuvius)
         {
             Time.timeScale = 0;
-        } else
+        }
+        else
         {
             Time.timeScale = 1;
         }
+
+        if (playerC.health < 100 && playerC.health > 70)
+        {
+            healthBar.GetComponent<Transform>().localScale = new Vector3(6.21198f, 0.6028796f, 1);
+        }
+        else if (playerC.health < 70 && playerC.health > 50)
+        {
+            healthBar.GetComponent<Transform>().localScale = new Vector3(5.260305f, 0.6028796f, 1);
+        }
+        else if (playerC.health < 50 && playerC.health > 20)
+        {
+            healthBar.GetComponent<Transform>().localScale = new Vector3(3.416042f, 0.6028796f, 1);
+        }
+        else if (playerC.health < 20 && playerC.health > 5)
+        {
+            healthBar.GetComponent<Transform>().localScale = new Vector3(1.43303f, 0.6028796f, 1);
+        }
     }
-    
+
 
     public void ionSelect()
     {
@@ -75,5 +95,25 @@ public class GameManager : MonoBehaviour
         GameObject.Find("midasSelectButton").SetActive(false);
         GameObject.Find("Text").SetActive(false);
         GameObject.Find("Image").SetActive(false);
+    }
+
+    //Scene Change
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "basementExit")
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        if (collision.gameObject.tag == "labsExit")
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        if (collision.gameObject.tag == "forestExit")
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 }
