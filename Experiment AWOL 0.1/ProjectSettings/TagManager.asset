@@ -8,6 +8,9 @@ TagManager:
   - purpleVial
   - greenVial
   - orangeVial
+  - defensePickup
+  - healthPickup
+  - dmgPickup
   layers:
   - Default
   - TransparentFX

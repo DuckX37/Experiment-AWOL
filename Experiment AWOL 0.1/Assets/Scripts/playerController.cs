@@ -61,7 +61,7 @@ public class playerController : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if(!stunned)
+        if (!stunned)
             transform.Translate(Vector2.right * horizontalInput * playerSpeed * Time.deltaTime);
 
         //Jump code
@@ -112,7 +112,6 @@ public class playerController : MonoBehaviour
 
             vesuviusSelect();
         }
-
 
     }
 
@@ -196,7 +195,7 @@ public class playerController : MonoBehaviour
         cooldown = 20;
         dmg = 10;
 
-        //Punch is in enemy controller
+        
 
 
         if (Input.GetKeyDown(KeyCode.S) && !rushCooldownOn)
@@ -267,7 +266,7 @@ public class playerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!gm.ion)
+        if (!gm.ion)
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -276,6 +275,43 @@ public class playerController : MonoBehaviour
             }
 
         }
+
+
+        //Pickup Script
+
+        if (collision.gameObject.tag == "healthPickup")
+        {
+            health += 20;
+            Destroy(gameObject);
+
+        }
+
+        if (collision.gameObject.tag == "defensePickup")
+        {
+            defenseSoak += 5;
+            Destroy(gameObject);
+            StartCoroutine("picupDuration");
+            defenseSoak -= 5;
+
+
+        }
+
+        if (collision.gameObject.tag == "dmgPickup")
+        {
+            dmg += 15;
+            Destroy(gameObject);
+            StartCoroutine("picupDuration");
+            dmg -= 15;
+        }
     }
-}  
+
+    //pickup duration script
+
+    IEnumerator pickupDuration()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+
+}
 

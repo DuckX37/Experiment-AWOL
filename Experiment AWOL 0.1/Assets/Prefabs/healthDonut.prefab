@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5271826743331885108}
   m_Layer: 0
   m_Name: healthDonut
-  m_TagString: Untagged
+  m_TagString: healthPickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
