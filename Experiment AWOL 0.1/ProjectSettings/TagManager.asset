@@ -11,6 +11,9 @@ TagManager:
   - defensePickup
   - healthPickup
   - dmgPickup
+  - basementExit
+  - labExit
+  - forestExit
   layers:
   - Default
   - TransparentFX
