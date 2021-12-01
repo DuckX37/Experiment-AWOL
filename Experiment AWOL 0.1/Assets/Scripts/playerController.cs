@@ -20,7 +20,7 @@ public class playerController : MonoBehaviour
 
     //Player Stats
 
-    public float health;
+    public float health = 100;
     public float hitChance;
     public float defenseSoak;
     public float cooldown;
@@ -189,13 +189,17 @@ public class playerController : MonoBehaviour
 
     public void midasSelect()
     {
-        health = 100;
+        // health = 100;
         hitChance = 100;
         defenseSoak = 5;
         cooldown = 20;
         dmg = 10;
 
-        
+        // placeholder hurt code
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            health = health - 10;
+        }
 
 
         if (Input.GetKeyDown(KeyCode.S) && !rushCooldownOn)
@@ -300,7 +304,7 @@ public class playerController : MonoBehaviour
         {
             dmg += 15;
             Destroy(collision.gameObject);
-            StartCoroutine("picupDuration");
+            StartCoroutine("pickupDuration");
             dmg -= 15;
         }
     }
@@ -311,7 +315,5 @@ public class playerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
     }
-
-
 }
 

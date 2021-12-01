@@ -40,19 +40,26 @@ public class GameManager : MonoBehaviour
 
         if (playerC.health < 100 && playerC.health > 70)
         {
-            healthBar.GetComponent<Transform>().localScale = new Vector3(6.21198f, 0.6028796f, 1);
+            healthBar.GetComponent<Transform>().localScale = new Vector3(5.907753f, 0.6028796f, 1);
+            // healthBar.GetComponent<Transform>().position = new Vector3(0.6418f, -0.64f, -12);
         }
         else if (playerC.health < 70 && playerC.health > 50)
         {
-            healthBar.GetComponent<Transform>().localScale = new Vector3(5.260305f, 0.6028796f, 1);
+            healthBar.GetComponent<Transform>().localScale = new Vector3(4.854092f, 0.6028796f, 1);
+            // healthBar.GetComponent<Transform>().position = new Vector3(0.115f, -0.64f, -12);
         }
         else if (playerC.health < 50 && playerC.health > 20)
         {
-            healthBar.GetComponent<Transform>().localScale = new Vector3(3.416042f, 0.6028796f, 1);
+            healthBar.GetComponent<Transform>().localScale = new Vector3(3.463394f, 0.6028796f, 1);
+            // healthBar.GetComponent<Transform>().position = new Vector3(-0.5804f, -0.64f, -12);
         }
         else if (playerC.health < 20 && playerC.health > 5)
         {
-            healthBar.GetComponent<Transform>().localScale = new Vector3(1.43303f, 0.6028796f, 1);
+            healthBar.GetComponent<Transform>().localScale = new Vector3(1.356265f, 0.6028796f, 1);
+            // healthBar.GetComponent<Transform>().position = new Vector3(-1.634f, -0.64f, -12);
+        } else if (playerC.health < 1)
+        {
+            healthBar.GetComponent<Transform>().localScale = new Vector3(0, 0, 1);
         }
     }
 
