@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5507506111527359489}
   - component: {fileID: 976997965215533637}
   - component: {fileID: 8155056911265461269}
+  - component: {fileID: -1247359792299653589}
+  - component: {fileID: 933981354301271574}
   m_Layer: 0
   m_Name: securityDrone
   m_TagString: Untagged
@@ -126,3 +128,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   leftBound: -75
+--- !u!114 &-1247359792299653589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376844151885518506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9610a810602f354bb8d9b03e3783389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  speed: 5
+  lazer: 7
+  fireTimer: 0
+  fireCooldown: 1
+  inRange: 0
+  canFire: 1
+  bottomBound: -14
+  velocity: {x: 0, y: 0}
+  playerPos: {x: 0, y: 0}
+  left: {fileID: 0}
+  bullet: {fileID: 6035882612509453009, guid: 62f4387925283254aa4cfdc7847e2e19, type: 3}
+  playerTarget: {fileID: 0}
+--- !u!114 &933981354301271574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376844151885518506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9610a810602f354bb8d9b03e3783389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  speed: 2
+  lazer: 7
+  fireTimer: 2
+  fireCooldown: 1
+  inRange: 0
+  canFire: 1
+  bottomBound: -14
+  velocity: {x: -7, y: -1}
+  playerPos: {x: 0, y: 0}
+  left: {fileID: 8155056911265461269}
+  bullet: {fileID: 6035882612509453009, guid: 62f4387925283254aa4cfdc7847e2e19, type: 3}
+  playerTarget: {fileID: 0}
