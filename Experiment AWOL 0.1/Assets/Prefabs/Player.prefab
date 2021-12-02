@@ -150,7 +150,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1698692993
 MonoBehaviour:
@@ -185,6 +185,7 @@ MonoBehaviour:
   laser: {fileID: 0}
   vesuExplosion: {fileID: 0}
   midasRush: {fileID: 0}
+  playerBody: {fileID: 0}
 --- !u!114 &8773256124608144619
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class scientistController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health < 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
 
@@ -41,11 +41,9 @@ public class scientistController : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         StartCoroutine("stunWait");
-
-        
     }
 
     public void OnTriggerExit2D(Collider2D collision)
@@ -59,11 +57,6 @@ public class scientistController : MonoBehaviour
         if (collision.gameObject.name == "rightWall")
         {
             Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
-        }
-
-        if (Input.GetKey(KeyCode.P) && collision.gameObject.name == "Player (1)")
-        {
-            Debug.Log("Pow");
         }
     }
 

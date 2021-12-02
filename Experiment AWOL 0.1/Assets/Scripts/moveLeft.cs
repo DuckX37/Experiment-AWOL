@@ -6,17 +6,19 @@ public class moveLeft : MonoBehaviour
 {
     public float moveSpeed = 1;
     public float leftBound = -75;
+
+    public Rigidbody2D myRB;
  
 
     void Start()
     {
-        
+        myRB = GetComponent<Rigidbody2D>();
     }
 
 
     void Update()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * moveSpeed);
+        myRB.velocity = new Vector2(-moveSpeed, 0);
 
         if (transform.position.x < leftBound)
         {

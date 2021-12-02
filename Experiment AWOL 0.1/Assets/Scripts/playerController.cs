@@ -66,7 +66,7 @@ public class playerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         if (!stunned)
-            transform.Translate(Vector2.right * horizontalInput * playerSpeed * Time.deltaTime);
+            velocity.x = (playerSpeed * horizontalInput);
 
         //Jump code
 
@@ -277,14 +277,18 @@ public class playerController : MonoBehaviour
         Debug.Log("Good to go!");
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        
-       
+        if (collision.gameObject.tag == "Enemy" && Input.GetKey(KeyCode.P))
+        {
+            Debug.Log("Punch 'em!");
+            collision.gameObject.GetComponent<scientistController>().health -= dmg;
+        }
     }
 
     public void OnCollisionEnter2D(Collider2D collision)
     {
+
         //Pickup Script
 
         if (collision.gameObject.tag == "healthPickup")
@@ -328,15 +332,7 @@ public class playerController : MonoBehaviour
         {
             SceneManager.LoadScene(4);
         }
-
-        /*
-        // punchy
-        if (Input.GetKeyDown(KeyCode.P) && collision.gameObject.tag == "Enemy")
-        {
-            // collision.gameObject.GetComponent<scientistController>().health -= dmg;
-            Debug.Log("Pow");
-        }
-        */
+        
     }
 
     //pickup duration script

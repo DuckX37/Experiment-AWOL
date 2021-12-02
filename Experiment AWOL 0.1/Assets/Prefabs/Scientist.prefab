@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3783395960192990936}
   - component: {fileID: 9069566488730999550}
   - component: {fileID: -7326451408522607715}
+  - component: {fileID: 3272086637286281543}
   m_Layer: 0
   m_Name: Scientist
   m_TagString: Untagged
@@ -144,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   leftBound: -75
+  myRB: {fileID: 0}
 --- !u!114 &-7326451408522607715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +161,28 @@ MonoBehaviour:
   gm: {fileID: 0}
   player: {fileID: 0}
   playerStun: {x: 0, y: 0, z: 0}
-  health: 30
+  health: 10
   dmg: 5
   stun: 0
+  stunCount: 0
+--- !u!50 &3272086637286281543
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764999485299164556}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 2

@@ -7,7 +7,7 @@ public class backgroundScroll : MonoBehaviour
 {
     
 
-    private Vector2 startPos;
+    private Vector3 startPos;
     private float repeatWidth;
     public int repeatCount = 25;
     // pog
