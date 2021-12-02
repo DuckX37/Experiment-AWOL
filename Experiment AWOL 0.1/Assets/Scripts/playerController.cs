@@ -251,7 +251,12 @@ public class playerController : MonoBehaviour
         {
             StartCoroutine("ExplosionDuration");
         }
-
+        /*
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Pow");
+        }
+        */
     }
 
     IEnumerator ExplosionDuration()
@@ -274,15 +279,7 @@ public class playerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!gm.ion)
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                collision.gameObject.GetComponent<scientistController>().health -= dmg;
-                Debug.Log("Pow");
-            }
-
-        }
+        
        
     }
 
@@ -331,6 +328,15 @@ public class playerController : MonoBehaviour
         {
             SceneManager.LoadScene(4);
         }
+
+        /*
+        // punchy
+        if (Input.GetKeyDown(KeyCode.P) && collision.gameObject.tag == "Enemy")
+        {
+            // collision.gameObject.GetComponent<scientistController>().health -= dmg;
+            Debug.Log("Pow");
+        }
+        */
     }
 
     //pickup duration script

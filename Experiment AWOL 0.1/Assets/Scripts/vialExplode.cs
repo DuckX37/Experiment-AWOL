@@ -17,7 +17,6 @@ public class vialExplode : MonoBehaviour
     {
         
     }
-
     /*
     public void OnCollisionEnter2D (Collider2D collision)
     {
@@ -51,7 +50,6 @@ public class vialExplode : MonoBehaviour
         
     }
     */
-
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "rightWall")
@@ -86,6 +84,6 @@ public class vialExplode : MonoBehaviour
             }
 
         }
-
+        
     }
 }
