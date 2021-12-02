@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
@@ -43,12 +44,15 @@ public class playerController : MonoBehaviour
 
     public GameObject midasRush;
 
+
+    public BoxCollider2D playerBody;
+
     void Start()
     {
         myRb = GetComponent<Rigidbody2D>();
         Physics2D.gravity *= gravityMod;
 
-
+        playerBody = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -126,7 +130,7 @@ public class playerController : MonoBehaviour
 
     public void ionSelect()
     {
-        health = 100;
+        // health = 100;
         hitChance = 100;
         defenseSoak = 0;
         cooldown = 2;
@@ -235,7 +239,7 @@ public class playerController : MonoBehaviour
     public void vesuviusSelect()
     {
 
-        health = 100;
+        // health = 100;
         hitChance = 100;
         defenseSoak = 0;
         cooldown = 20;
@@ -279,8 +283,11 @@ public class playerController : MonoBehaviour
             }
 
         }
+       
+    }
 
-
+    public void OnCollisionEnter2D(Collider2D collision)
+    {
         //Pickup Script
 
         if (collision.gameObject.tag == "healthPickup")
@@ -307,6 +314,23 @@ public class playerController : MonoBehaviour
             StartCoroutine("pickupDuration");
             dmg -= 15;
         }
+
+        //Level change
+
+        if (collision.gameObject.tag == "basementExit")
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        if (collision.gameObject.tag == "labsExit")
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        if (collision.gameObject.tag == "forestExit")
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 
     //pickup duration script
@@ -315,5 +339,7 @@ public class playerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
     }
+
+  
 }
 

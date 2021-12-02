@@ -106,21 +106,5 @@ public class GameManager : MonoBehaviour
 
     //Scene Change
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "basementExit")
-        {
-            SceneManager.LoadScene(2);
-        }
-
-        if (collision.gameObject.tag == "labsExit")
-        {
-            SceneManager.LoadScene(3);
-        }
-
-        if (collision.gameObject.tag == "forestExit")
-        {
-            SceneManager.LoadScene(4);
-        }
-    }
+   
 }

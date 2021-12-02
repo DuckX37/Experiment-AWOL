@@ -14,6 +14,8 @@ public class scientistController : MonoBehaviour
 
     public bool stun = false;
 
+    public int stunCount = 0; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,7 @@ public class scientistController : MonoBehaviour
 
         }
 
-        if (stun)
+        if (stun && stunCount == 0)
         {
             playerStun = player.transform.position;
             player.GetComponent<playerController>().stunned = true;
@@ -50,6 +52,14 @@ public class scientistController : MonoBehaviour
         StopCoroutine("stunDuration");
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "rightWall")
+        {
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
+        }
+    }
+
     IEnumerator stunWait()
     {
         //Debug.Log("aha gotcha bitch!");
@@ -61,14 +71,14 @@ public class scientistController : MonoBehaviour
     IEnumerator stunDuration()
     {
         stun = true;
+        stunCount++;
+        Debug.Log("Stun Count: " + stunCount);
         // player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
-        Debug.Log("Bzzt");
+        //Debug.Log("Bzzt");
         yield return new WaitForSeconds(2);
         player.GetComponent<playerController>().stunned = false;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         stun = false;
     }
-
-
 }
