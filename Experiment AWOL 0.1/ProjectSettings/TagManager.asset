@@ -15,6 +15,7 @@ TagManager:
   - labExit
   - forestExit
   - Enemy
+  - level
   layers:
   - Default
   - TransparentFX

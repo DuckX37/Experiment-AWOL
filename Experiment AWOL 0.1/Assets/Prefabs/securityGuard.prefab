@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7628927268631066574}
   - component: {fileID: 3528464360707185873}
   - component: {fileID: -5040385649121260935}
+  - component: {fileID: 1230134095956893888}
   m_Layer: 0
   m_Name: securityGuard
   m_TagString: Untagged
@@ -144,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   leftBound: -75
+  myRB: {fileID: 0}
 --- !u!114 &-5040385649121260935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +164,24 @@ MonoBehaviour:
   Grappler: {fileID: 4902082145570505773, guid: e6277417c332285469420ef9a96d5a65, type: 3}
   player: {fileID: 0}
   target: {x: 0, y: 0}
+--- !u!50 &1230134095956893888
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650698920888787302}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 6
