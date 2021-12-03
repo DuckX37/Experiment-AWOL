@@ -22,10 +22,9 @@ public class playerController : MonoBehaviour
     //Player Stats
 
     public float health = 100;
-    public float hitChance;
-    public float defenseSoak;
-    public float cooldown;
-    public float dmg;
+    public float cooldown = 2;
+    public float dmg = 20;
+    public float defenseSoak = 0;
 
     // cooldowns
     public bool laserCooldownOn = false;
@@ -53,6 +52,11 @@ public class playerController : MonoBehaviour
         Physics2D.gravity *= gravityMod;
 
         playerBody = GetComponent<BoxCollider2D>();
+
+        if (gm.midas)
+        {
+            defenseSoak = 5;
+        }
     }
 
     // Update is called once per frame
@@ -130,11 +134,6 @@ public class playerController : MonoBehaviour
 
     public void ionSelect()
     {
-        // health = 100;
-        hitChance = 100;
-        defenseSoak = 0;
-        cooldown = 2;
-        dmg = 10;
 
         float laserSpeed = 15f;
 
@@ -193,11 +192,6 @@ public class playerController : MonoBehaviour
 
     public void midasSelect()
     {
-        // health = 100;
-        hitChance = 100;
-        defenseSoak = 5;
-        cooldown = 20;
-        dmg = 10;
 
         // placeholder hurt code
         if (Input.GetKeyDown(KeyCode.H))
@@ -239,12 +233,6 @@ public class playerController : MonoBehaviour
     public void vesuviusSelect()
     {
 
-        // health = 100;
-        hitChance = 100;
-        defenseSoak = 0;
-        cooldown = 20;
-        dmg = 10;
-
         //Punch is in Enemy controller
 
         if (Input.GetKeyDown(KeyCode.S) && !explosionCooldownOn)
@@ -277,12 +265,16 @@ public class playerController : MonoBehaviour
         Debug.Log("Good to go!");
     }
 
+    //Universal Punch script
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && Input.GetKey(KeyCode.P))
+        if (!gm.ion)
         {
-            Debug.Log("Punch 'em!");
-            collision.gameObject.GetComponent<scientistController>().health -= dmg;
+            if (collision.gameObject.tag == "Enemy" && !stunned && Input.GetKey(KeyCode.P))
+            {
+                Debug.Log("Punch 'em!");
+                collision.gameObject.GetComponent<scientistController>().health -= dmg;
+            }
         }
     }
 
@@ -302,7 +294,7 @@ public class playerController : MonoBehaviour
         {
             defenseSoak += 5;
             Destroy(collision.gameObject);
-            StartCoroutine("picupDuration");
+            StartCoroutine("pickupDuration");
             defenseSoak -= 5;
 
 

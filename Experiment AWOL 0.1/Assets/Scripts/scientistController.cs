@@ -14,7 +14,7 @@ public class scientistController : MonoBehaviour
 
     public bool stun = false;
 
-    public int stunCount = 0; 
+   
 
     // Start is called before the first frame update
     void Start()
@@ -31,29 +31,22 @@ public class scientistController : MonoBehaviour
 
         }
 
-        if (stun && stunCount == 0)
+        if (stun)
         {
             playerStun = player.transform.position;
             player.GetComponent<playerController>().stunned = true;
 
-            //player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             player.transform.position = playerStun;
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collider)
-    {
-        StartCoroutine("stunWait");
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        StopCoroutine("stunWait");
-        StopCoroutine("stunDuration");
-    }
-
+   
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "player")
+            StartCoroutine("stunDuration");
+
         if (collision.gameObject.name == "rightWall")
         {
             Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
@@ -63,7 +56,7 @@ public class scientistController : MonoBehaviour
     IEnumerator stunWait()
     {
         //Debug.Log("aha gotcha bitch!");
-        yield return new WaitForSeconds(.0f);
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine("stunDuration");
 
     }
@@ -71,14 +64,22 @@ public class scientistController : MonoBehaviour
     IEnumerator stunDuration()
     {
         stun = true;
-        stunCount++;
-        //Debug.Log("Stun Count: " + stunCount);
-        // player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
-        //Debug.Log("Bzzt");
-        yield return new WaitForSeconds(2);
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        player.GetComponent<playerController>().health -= dmg;
+        yield return new WaitForSeconds(0.5f);
         player.GetComponent<playerController>().stunned = false;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        Debug.Log("We get here");
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         stun = false;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "ionLaser" || collision.gameObject.name == "ionBeam"
+            || collision.gameObject.name == "vesuExplosion" || collision.gameObject.name == "midasRush")
+        {
+            health = health - player.GetComponent<playerController>().dmg;
+        }
     }
 }
