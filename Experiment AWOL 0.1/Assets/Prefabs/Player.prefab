@@ -173,10 +173,9 @@ MonoBehaviour:
   jumpCount: 0
   gm: {fileID: 0}
   health: 0
-  hitChance: 0
-  defenseSoak: 0
   cooldown: 0
   dmg: 0
+  defenseSoak: 0
   laserCooldownOn: 0
   explosionCooldownOn: 0
   rushCooldownOn: 0

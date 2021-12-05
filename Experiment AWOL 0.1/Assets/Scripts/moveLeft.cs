@@ -21,24 +21,33 @@ public class moveLeft : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.tag == "Enemy" || gameObject.tag == "purpleVial" || gameObject.tag == "greenVial" || gameObject.tag == "orangeVial" || player.GetComponent<playerController>().stunned || gameObject.name == "Background")
+        if (gameObject.tag == "Enemy" || gameObject.tag == "purpleVial" || gameObject.tag == "greenVial" || gameObject.tag == "orangeVial" || player.GetComponent<playerController>().stunned || gameObject.name == "Background" || gameObject.tag =="basementExit" ||gameObject.tag == "labsExit" || gameObject.tag == "forestExit")
         {
              myRB.velocity = new Vector2(-moveSpeed, 0);
         }
-
+        
         if (transform.position.x < leftBound)
         {
             Destroy(gameObject);
         }
 
-        /*if (player.GetComponent<playerController>().stunned && gameObject.tag == "player")
+       
+
+       //it would be so nice if this worked -cries-
+
+       /*if (!gameObject.tag == "player" || player.GetComponent<playerController>().stunned)
+       {
+            myRB.velocity = new Vector2(-moveSpeed, 0);
+       }
+       */
+    }
+
+    public void OnCollsionEnter2D (Collision2D collision)
+    {
+        if (gameObject.tag == "Enemy" || gameObject.tag == "purpleVial" || gameObject.tag == "greenVial" || gameObject.tag == "orangeVial")
         {
-            moveSpeed = 2;
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
+
         }
-        else if (gameObject.tag == "player")
-        {
-            moveSpeed = 0;
-        }
-        */
     }
 }

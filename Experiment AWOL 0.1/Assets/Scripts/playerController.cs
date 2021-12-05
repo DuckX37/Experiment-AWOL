@@ -140,7 +140,7 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P) && !laserCooldownOn)
         {
             laserCount--;
-            // Debug.Log("Laser Count: " + laserCount);
+            
 
             GameObject l = Instantiate(laser, transform);
             l.GetComponent<Rigidbody2D>().velocity = new Vector2(laserSpeed, 0);
@@ -161,7 +161,7 @@ public class playerController : MonoBehaviour
         {
             beam.SetActive(true);
             StartCoroutine("BeamDuration");
-            // StartCoroutine("BeamCooldown");
+            
         }
     }
 
@@ -233,7 +233,6 @@ public class playerController : MonoBehaviour
     public void vesuviusSelect()
     {
 
-        //Punch is in Enemy controller
 
         if (Input.GetKeyDown(KeyCode.S) && !explosionCooldownOn)
         {
@@ -309,6 +308,12 @@ public class playerController : MonoBehaviour
         }
 
         //Level change
+
+        /*if (gm.ion || gm.midas || gm.vesuvius && SceneManager.GetSceneByName("Character Select"))
+        {
+            SceneManager.LoadScene(1);
+        }
+        */
 
         if (collision.gameObject.tag == "basementExit")
         {

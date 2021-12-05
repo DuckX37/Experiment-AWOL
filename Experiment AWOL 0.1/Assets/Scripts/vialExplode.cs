@@ -57,6 +57,11 @@ public class vialExplode : MonoBehaviour
             Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
         }
 
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
+        }
+
         if (collision.gameObject.tag == "player")
         {
             if (gameObject.tag == "purpleVial")
