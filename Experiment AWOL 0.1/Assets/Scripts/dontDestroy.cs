@@ -26,7 +26,7 @@ public class dontDestroy : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        GameObject[] obja = GameObject.FindGameObjectsWithTag("GM");
+        GameObject[] obj = GameObject.FindGameObjectsWithTag("GM");
         if (objs.Length > 1)
         {
             Destroy(this.gameObject);

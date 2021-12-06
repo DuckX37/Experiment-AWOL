@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class backgroundScroll : MonoBehaviour
 {
-    
-
     private Vector3 startPos;
     private float repeatWidth;
     public int repeatCount = 25;

@@ -10,7 +10,7 @@ public class playerController : MonoBehaviour
     public int playerSpeed = 3;
     public int laserCount = 20;
 
-    public float laserLifesSpan = 2.5f;
+    public float laserLifesSpan = 0.05f;
 
     public float jumpForce;
     public float horizontalInput;
@@ -147,7 +147,7 @@ public class playerController : MonoBehaviour
             l.GetComponent<Rigidbody2D>().velocity = new Vector2(laserSpeed, 0);
             Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), l.GetComponent<BoxCollider2D>());
 
-            Destroy(l, laserLifesSpan);
+            Destroy(l, 1f);
 
         }
 
@@ -180,7 +180,7 @@ public class playerController : MonoBehaviour
     IEnumerator BeamDuration()
     {
         Debug.Log("LONG ASS LASER BEAM");
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         beam.SetActive(false);
         StartCoroutine("BeamCooldown");
     }

@@ -55,7 +55,6 @@ public class scientistController : MonoBehaviour
 
     IEnumerator stunWait()
     {
-        //Debug.Log("aha gotcha bitch!");
         yield return new WaitForSeconds(0.5f);
         StartCoroutine("stunDuration");
 
@@ -69,17 +68,18 @@ public class scientistController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         player.GetComponent<playerController>().stunned = false;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        Debug.Log("We get here");
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         stun = false;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "ionLaser" || collision.gameObject.name == "ionBeam"
+        if (collision.gameObject.name.Contains("ionLaser") || collision.gameObject.name == "ionBeam"
             || collision.gameObject.name == "vesuExplosion" || collision.gameObject.name == "midasRush")
         {
-            health = health - player.GetComponent<playerController>().dmg;
+            Debug.Log("I'm taking damage!!! ouch");
+            // health = health - player.GetComponent<playerController>().dmg;
+            health = health - 5;
         }
     }
 }
