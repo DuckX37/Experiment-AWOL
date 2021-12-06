@@ -16,6 +16,7 @@ TagManager:
   - forestExit
   - Enemy
   - level
+  - GM
   layers:
   - Default
   - TransparentFX

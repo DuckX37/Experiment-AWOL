@@ -23,8 +23,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("player");
 
+        playerC = player.GetComponent<playerController>();
     }
+
 
     // Update is called once per frame
     void Update()

@@ -43,7 +43,6 @@ public class playerController : MonoBehaviour
 
     public GameObject midasRush;
 
-
     public BoxCollider2D playerBody;
 
     void Start()
@@ -57,6 +56,8 @@ public class playerController : MonoBehaviour
         {
             defenseSoak = 5;
         }
+
+
     }
 
     // Update is called once per frame
@@ -275,9 +276,27 @@ public class playerController : MonoBehaviour
                 collision.gameObject.GetComponent<scientistController>().health -= dmg;
             }
         }
+
+
+        if (collision.gameObject.tag == "basementExit")
+        {
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
+            SceneManager.LoadScene(2);
+        }
+
+        if (collision.gameObject.tag == "labExit")
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        if (collision.gameObject.tag == "forestExit")
+        {
+            SceneManager.LoadScene(4);
+        }
+
     }
 
-    public void OnCollisionEnter2D(Collider2D collision)
+    public void OnCollisionEnter2D (Collider2D collision)
     {
 
         //Pickup Script
@@ -315,21 +334,6 @@ public class playerController : MonoBehaviour
         }
         */
 
-        if (collision.gameObject.tag == "basementExit")
-        {
-            SceneManager.LoadScene(2);
-        }
-
-        if (collision.gameObject.tag == "labsExit")
-        {
-            SceneManager.LoadScene(3);
-        }
-
-        if (collision.gameObject.tag == "forestExit")
-        {
-            SceneManager.LoadScene(4);
-        }
-        
     }
 
     //pickup duration script

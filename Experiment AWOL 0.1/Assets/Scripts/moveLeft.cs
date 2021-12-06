@@ -21,7 +21,9 @@ public class moveLeft : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.tag == "Enemy" || gameObject.tag == "purpleVial" || gameObject.tag == "greenVial" || gameObject.tag == "orangeVial" || player.GetComponent<playerController>().stunned || gameObject.name == "Background" || gameObject.tag =="basementExit" ||gameObject.tag == "labsExit" || gameObject.tag == "forestExit")
+        if (gameObject.tag == "Enemy" || gameObject.tag == "purpleVial" || gameObject.tag == "greenVial" ||
+            gameObject.tag == "orangeVial" || player.GetComponent<playerController>().stunned || gameObject.name == "Background" ||
+            gameObject.tag =="basementExit" ||gameObject.tag == "labExit" || gameObject.tag == "forestExit")
         {
              myRB.velocity = new Vector2(-moveSpeed, 0);
         }
