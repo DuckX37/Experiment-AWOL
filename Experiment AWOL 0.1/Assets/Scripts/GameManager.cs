@@ -12,8 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject Title;
     public GameObject healthBar;
+    public GameObject cameraSound;
 
     public playerController playerC;
+
+    public AudioClip basement;
 
     public bool ion = false;
     public bool vesuvius = false;
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("player");
 
         playerC = player.GetComponent<playerController>();
+
+        cameraSound = GameObject.Find("Main Camera");
     }
 
 
@@ -79,6 +84,9 @@ public class GameManager : MonoBehaviour
         GameObject.Find("midasSelectButton").SetActive(false);
         GameObject.Find("Text").SetActive(false);
         GameObject.Find("Image").SetActive(false);
+
+        cameraSound.GetComponent<AudioSource>().clip = basement;
+        cameraSound.GetComponent<AudioSource>().Play();
     }
 
     public void midasSelect()
@@ -92,6 +100,9 @@ public class GameManager : MonoBehaviour
         GameObject.Find("midasSelectButton").SetActive(false);
         GameObject.Find("Text").SetActive(false);
         GameObject.Find("Image").SetActive(false);
+
+        cameraSound.GetComponent<AudioSource>().clip = basement;
+        cameraSound.GetComponent<AudioSource>().Play();
     }
 
     public void vesuviusSelect()
@@ -105,6 +116,9 @@ public class GameManager : MonoBehaviour
         GameObject.Find("midasSelectButton").SetActive(false);
         GameObject.Find("Text").SetActive(false);
         GameObject.Find("Image").SetActive(false);
+
+        cameraSound.GetComponent<AudioSource>().clip = basement;
+        cameraSound.GetComponent<AudioSource>().Play();
     }
 
     //Scene Change
